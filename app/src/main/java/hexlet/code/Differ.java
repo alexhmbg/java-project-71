@@ -25,8 +25,8 @@ public class Differ {
         File json2 = new File(String.valueOf(path2));
 
         ObjectMapper mapper = new ObjectMapper();
-        Map<String, Object> jsonMap1 = mapper.readValue(json1, new TypeReference<>(){});
-        Map<String, Object> jsonMap2 = mapper.readValue(json2, new TypeReference<>(){});
+        Map<String, Object> jsonMap1 = mapper.readValue(json1, new TypeReference<>() { });
+        Map<String, Object> jsonMap2 = mapper.readValue(json2, new TypeReference<>() { });
 
         var result = Stream.concat(
                 jsonMap1.keySet().stream(),
