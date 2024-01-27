@@ -20,7 +20,7 @@ class App implements Callable {
     private String format;
 
     @Override
-    public String call() throws Exception { // try catch
+    public String call() throws Exception {
         var result = Differ.generate(filepath1, filepath2);
         System.out.println(result);
         return result;

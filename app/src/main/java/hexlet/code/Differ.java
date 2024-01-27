@@ -12,51 +12,33 @@ import java.util.stream.Stream;
 
 public class Differ {
     public static String generate(String filepath1, String filepath2) throws Exception {
-        Path path1 = Paths.get(filepath1).toAbsolutePath().normalize();
-        Path path2 = Paths.get(filepath2).toAbsolutePath().normalize();
-
-        if (!Files.exists(path1)) {
-            throw new Exception("File '" + filepath1 + "' does not exist");
-        } else if (!Files.exists(path2)) {
-            throw new Exception("File '" + filepath2 + "' does not exist");
-        }
-
-        File json1 = new File(String.valueOf(path1)); // files .. new file
-        File json2 = new File(String.valueOf(path2));
-
-        ObjectMapper mapper = new ObjectMapper();
-        Map<String, Object> jsonMap1 = mapper.readValue(json1, new TypeReference<>() { }); // string path
-        Map<String, Object> jsonMap2 = mapper.readValue(json2, new TypeReference<>() { });
+        Map<String, Object> fileMap1 = Parser.parse(filepath1);
+        Map<String, Object> fileMap2 = Parser.parse(filepath2);
 
         var result = Stream.concat(
-                jsonMap1.keySet().stream(),
-                jsonMap2.keySet().stream())
+                fileMap1.keySet().stream(),
+                fileMap2.keySet().stream())
                 .distinct()
-                .sorted() // new map changed / deleted / added / same
-                .map(key -> valueDiff(key, jsonMap1.get(key), jsonMap2.get(key)))
+                .sorted()
+                .map(key -> {
+                    var value1 = fileMap1.getOrDefault(key, "added");
+                    var value2 = fileMap2.getOrDefault(key, "deleted");
+                    return compareStrings(key, value1, value2);
+                })
                 .collect(Collectors.joining("\n", "{\n", "\n}"));
 
         return result;
     }
 
-    public static String valueDiff(String key, Object value1, Object value2) {
-
-        if (value1 == null) {
-            return "  + " + key + ": " + value2;
-        } else if (value2 == null) {
-            return "  - " + key + ": " + value1;
-        } else if (value1.equals(value2)) {
+    public static String compareStrings(String key, Object value1, Object value2) {
+        if (value1.equals(value2)) {
             return "    " + key + ": " + value1;
+        } else if (value1.equals("added")) {
+            return "  + " + key + ": " + value2;
+        } else if (value2.equals("deleted")) {
+            return "  - " + key + ": " + value1;
         } else {
-            return "  - "
-                    + key
-                    + ": "
-                    + value1
-                    + "\n"
-                    + "  + "
-                    + key
-                    + ": "
-                    + value2;
+            return "  - " + key + ": " + value1 + "\n" + "  + " + key + ": " + value2;
         }
     }
 }
