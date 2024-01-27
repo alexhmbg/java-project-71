@@ -4,9 +4,14 @@ on:
   - push
   - pull_request
 
+defaults:
+  run:
+    working-directory: ./app
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
 
     steps:
       - uses: actions/checkout@v3
@@ -16,13 +21,8 @@ jobs:
           distribution: 'temurin'
       - uses: gradle/gradle-build-action@v2
         with:
-          build-root-directory: app
           gradle-version: 8.3
-      - run: ./gradlew checkstyleMain
-        with:
-          build-root-directory: app
-      - run: ./gradlew test
-        with:
+          arguments: build
           build-root-directory: app
       - name: Publish code coverage
         uses: paambaati/codeclimate-action@v5.0.0
