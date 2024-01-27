@@ -21,18 +21,18 @@ public class Differ {
             throw new Exception("File '" + filepath2 + "' does not exist");
         }
 
-        File json1 = new File(String.valueOf(path1));
+        File json1 = new File(String.valueOf(path1)); // files .. new file
         File json2 = new File(String.valueOf(path2));
 
         ObjectMapper mapper = new ObjectMapper();
-        Map<String, Object> jsonMap1 = mapper.readValue(json1, new TypeReference<>() { });
+        Map<String, Object> jsonMap1 = mapper.readValue(json1, new TypeReference<>() { }); // string path
         Map<String, Object> jsonMap2 = mapper.readValue(json2, new TypeReference<>() { });
 
         var result = Stream.concat(
                 jsonMap1.keySet().stream(),
                 jsonMap2.keySet().stream())
                 .distinct()
-                .sorted()
+                .sorted() // new map changed / deleted / added / same
                 .map(key -> valueDiff(key, jsonMap1.get(key), jsonMap2.get(key)))
                 .collect(Collectors.joining("\n", "{\n", "\n}"));
 
