@@ -1,38 +1,25 @@
 package hexlet.code;
 
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.*;
 import java.util.stream.Stream;
 
 public class Differ {
-    public static String generate(String filepath1, String filepath2) throws Exception {
+    public static String generate(String filepath1, String filepath2, String format) throws Exception {
         Map<String, Object> fileMap1 = Parser.parse(filepath1);
         Map<String, Object> fileMap2 = Parser.parse(filepath2);
-
-        var result = Stream.concat(
+        List<String> sortedKeyList = Stream.concat(
                 fileMap1.keySet().stream(),
                 fileMap2.keySet().stream())
                 .distinct()
                 .sorted()
-                .map(key -> {
-                    var value1 = fileMap1.getOrDefault(key, "added");
-                    var value2 = fileMap2.getOrDefault(key, "deleted");
-                    return compareStrings(key, value1, value2);
-                })
-                .collect(Collectors.joining("\n", "{\n", "\n}"));
+                .toList();
 
-        return result;
-    }
+        var listOfMapDiffs = DiffBuilder.build(fileMap1, fileMap2, sortedKeyList);
 
-    public static String compareStrings(String key, Object value1, Object value2) {
-        if (value1.equals(value2)) {
-            return "    " + key + ": " + value1;
-        } else if (value1.equals("added")) {
-            return "  + " + key + ": " + value2;
-        } else if (value2.equals("deleted")) {
-            return "  - " + key + ": " + value1;
-        } else {
-            return "  - " + key + ": " + value1 + "\n" + "  + " + key + ": " + value2;
+        if (format.equals("stylish")) {
+            return Formatter.stylish(listOfMapDiffs);
         }
+
+        return Formatter.stylish(listOfMapDiffs);
     }
 }
