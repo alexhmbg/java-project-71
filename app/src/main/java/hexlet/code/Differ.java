@@ -1,6 +1,7 @@
 package hexlet.code;
 
-import java.util.*;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 public class Differ {

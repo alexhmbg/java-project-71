@@ -16,7 +16,10 @@ class App implements Callable {
     @Parameters (index = "1", paramLabel = "filepath2", description = "path to second file")
     private String filepath2;
 
-    @Option (names = {"-f", "--format"}, defaultValue = "stylish", paramLabel = "format", description = "output format [default: stylish]")
+    @Option (names = {"-f", "--format"},
+            defaultValue = "stylish",
+            paramLabel = "format",
+            description = "output format [default: stylish]")
     private String format;
 
     @Override

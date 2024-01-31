@@ -6,7 +6,9 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class DiffBuilder {
-    public static List<Map<String, Object>> build(Map<String, Object> fileMap1, Map<String, Object> fileMap2, List<String> keys) {
+    public static List<Map<String, Object>> build(Map<String, Object> fileMap1,
+                                                  Map<String, Object> fileMap2,
+                                                  List<String> keys) {
         List<Map<String, Object>> listOfMapDiffs = new LinkedList<>();
 
         for (var key : keys) {

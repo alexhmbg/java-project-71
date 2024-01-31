@@ -13,16 +13,18 @@ public class Parser {
     public static Map<String, Object> parse(String filepath) throws Exception {
         Path path = Paths.get(filepath).toAbsolutePath().normalize();
 
-
         if (!Files.exists(path)) {
             throw new Exception("File '" + filepath + "' does not exist");
         }
 
         String fileExtension = filepath.substring(filepath.lastIndexOf(".") + 1);
-        ObjectMapper mapper = fileExtension.equals("yml") ? new YAMLMapper() : new ObjectMapper();
-        String content = Files.readString(path);
+        ObjectMapper mapper = switch (fileExtension) {
+            case "yml" -> new YAMLMapper();
+            case "anything" -> new YAMLMapper();
+            default -> new ObjectMapper();
+        };
 
-        var fileMap = mapper.readValue(content, new TypeReference<Map<String, Object>>() { });
+        var fileMap = mapper.readValue(Files.readString(path), new TypeReference<Map<String, Object>>() { });
 
         return fileMap;
     }

@@ -30,7 +30,6 @@ public class Formatter {
                     map.put("  + " + getKey, getValue2);
                     break;
             }
-
         }
 
         var result = map.entrySet().stream()
