@@ -6,4 +6,4 @@
 
 <br />json diff: https://asciinema.org/a/JodVSxHuH6qyJUUGhhR7CYbcP <br />
 <br />yml diff:  https://asciinema.org/a/41dfZ6e5140fj1qwDaJQDwCT8 <br />
-<br />formats diff:  https://asciinema.org/a/41dfZ6e5140fj1qwDaJQDwCT8 <br />
+<br />formats diff:  https://asciinema.org/a/LQEslspDAd8X0nbEYdytFiMtE <br />
