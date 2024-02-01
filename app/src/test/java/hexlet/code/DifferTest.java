@@ -9,6 +9,10 @@ class DifferTest {
                 + "  - follow: false\n"
                 + "    host: hexlet.io\n"
                 + "  - obj1: {nestedKey=value, isNested=true}\n"
+                + "  + obj1: {nestedKey=value}\n"
+                + "  + obj2: {key=value}\n"
+                + "  - obj3: 250\n"
+                + "  + obj3: {key=value}\n"
                 + "  - proxy: 123.234.53.22\n"
                 + "  - timeout: 50\n"
                 + "  + timeout: 20\n"
@@ -34,15 +38,13 @@ class DifferTest {
         var actual2 = Differ.generate("src/test/resources/file1.yml", "src/test/resources/file2.yml", "stylish");
         assertEquals(expected2, actual2);
 
-        var expected3 = "{\n"
-                + "  - follow: false\n"
-                + "    host: hexlet.io\n"
-                + "  - obj1: {nestedKey=value, isNested=true}\n"
-                + "  - proxy: 123.234.53.22\n"
-                + "  - timeout: 50\n"
-                + "  + timeout: 20\n"
-                + "  + verbose: true\n"
-                + "}";
+        var expected3 = "Property 'follow' was removed\n" +
+                "Property 'obj1' was updated. From [complex value] to [complex value]\n" +
+                "Property 'obj2' was added with value: [complex value]\n" +
+                "Property 'obj3' was updated. From 250 to [complex value]\n" +
+                "Property 'proxy' was removed\n" +
+                "Property 'timeout' was updated. From 50 to 20\n" +
+                "Property 'verbose' was added with value: true";
         var actual3 = Differ.generate("src/test/resources/file1.json", "src/test/resources/file2.json", "plain");
         assertEquals(expected3, actual3);
     }
