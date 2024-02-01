@@ -17,10 +17,6 @@ public class Differ {
 
         var listOfMapDiffs = DiffBuilder.build(fileMap1, fileMap2, sortedKeyList);
 
-        if (format.equals("stylish")) {
-            return Formatter.stylish(listOfMapDiffs);
-        }
-
-        return Formatter.stylish(listOfMapDiffs);
+        return Formatter.format(listOfMapDiffs, format);
     }
 }

@@ -8,3 +8,5 @@ calling-birds:
     - louie
     - fred
 check: null
+chars1: ["a", "b", "c"]
+chars2: ["d", "e", "f"]

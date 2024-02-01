@@ -1,5 +1,14 @@
 {
   "timeout": 20,
   "verbose": true,
-  "host": "hexlet.io"
+  "host": "hexlet.io",
+  "obj1": {
+    "nestedKey": "value"
+  },
+  "obj2": {
+    "key": "value"
+  },
+  "obj3": {
+    "key": "value"
+  }
 }

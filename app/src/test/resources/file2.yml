@@ -4,3 +4,9 @@ vi: 2.10
 xmas: false
 calling-birds: huey
 check: null
+chars1: ["a", "b", "c"]
+chars2: false
+obj1: {
+    nestedKey: "value",
+    isNested: true
+  }

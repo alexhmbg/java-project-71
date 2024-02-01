@@ -1,41 +1,19 @@
 package hexlet.code;
 
-import java.util.LinkedHashMap;
+import hexlet.code.formatters.Plain;
+import hexlet.code.formatters.Stylish;
+
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class Formatter {
-    public static String stylish(List<Map<String, Object>> listOfMapDiffs) {
-        Map<String, Object> map = new LinkedHashMap<>();
+    public static String format(List<Map<String, Object>> listOfMapDiffs, String format) {
 
-        for (var mapOfDiffs : listOfMapDiffs) {
-            var getKey = mapOfDiffs.get("key");
-            var getStatus = mapOfDiffs.get("status");
-            var getValue1 = mapOfDiffs.get("value1");
-            var getValue2 = mapOfDiffs.get("value2");
+        return switch (format) {
+            case "stylish" -> Stylish.format(listOfMapDiffs);
+            case "plain" -> Plain.format(listOfMapDiffs);
+            default -> Formatter.format(listOfMapDiffs, "stylish");
+        };
 
-            switch (String.valueOf(getStatus)) {
-                case "added":
-                    map.put("  + " + getKey, getValue1);
-                    break;
-                case "deleted":
-                    map.put("  - " + getKey, getValue1);
-                    break;
-                case "unchanged":
-                    map.put("    " + getKey, getValue1);
-                    break;
-                default:
-                    map.put("  - " + getKey, getValue1);
-                    map.put("  + " + getKey, getValue2);
-                    break;
-            }
-        }
-
-        var result = map.entrySet().stream()
-                .map(n -> n.getKey() + ": " + n.getValue())
-                .collect(Collectors.joining("\n", "{\n", "\n}"));
-
-        return result;
     }
 }
