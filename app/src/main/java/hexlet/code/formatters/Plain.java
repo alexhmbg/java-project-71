@@ -1,10 +1,5 @@
 package hexlet.code.formatters;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import com.fasterxml.jackson.databind.util.JSONWrappedObject;
-import hexlet.code.Formatter;
-
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
