@@ -238,8 +238,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.app [checkstyleMain]" />
-        <item itemvalue="Gradle.app [checkstyleTest]" />
         <item itemvalue="Gradle.app [installDist]" />
+        <item itemvalue="Gradle.app [checkstyleTest]" />
         <item itemvalue="Gradle.app [run]" />
         <item itemvalue="Gradle.app [check]" />
       </list>
