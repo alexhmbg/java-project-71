@@ -18,11 +18,7 @@ public class Parser {
         }
 
         String fileExtension = filepath.substring(filepath.lastIndexOf(".") + 1);
-        ObjectMapper mapper = switch (fileExtension) {
-            case "yml" -> new YAMLMapper();
-            case "anything" -> new YAMLMapper();
-            default -> new ObjectMapper();
-        };
+        ObjectMapper mapper = fileExtension.equals("yml") ? new YAMLMapper() : new ObjectMapper();
 
         var fileMap = mapper.readValue(Files.readString(path), new TypeReference<Map<String, Object>>() { });
 

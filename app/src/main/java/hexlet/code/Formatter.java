@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import hexlet.code.formatters.Json;
 import hexlet.code.formatters.Plain;
 import hexlet.code.formatters.Stylish;
 
@@ -12,6 +13,7 @@ public class Formatter {
         return switch (format) {
             case "stylish" -> Stylish.format(listOfMapDiffs);
             case "plain" -> Plain.format(listOfMapDiffs);
+            case "json" -> Json.format(listOfMapDiffs);
             default -> Formatter.format(listOfMapDiffs, "stylish");
         };
 

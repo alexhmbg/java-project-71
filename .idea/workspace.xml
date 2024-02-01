@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f2430dd-9e2a-4731-9d5a-3286e1182e72" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/hexlet/code/formatters/Json.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hexlet/code/Formatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hexlet/code/Formatter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hexlet/code/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hexlet/code/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/hexlet/code/DifferTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/hexlet/code/DifferTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +124,7 @@
       <recent name="$PROJECT_DIR$/app/src/test/resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.app [checkstyleTest]">
+  <component name="RunManager" selected="Gradle.app [checkstyleMain]">
     <configuration name="app [check]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -233,10 +237,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.app [checkstyleTest]" />
         <item itemvalue="Gradle.app [checkstyleMain]" />
-        <item itemvalue="Gradle.app [run]" />
+        <item itemvalue="Gradle.app [checkstyleTest]" />
         <item itemvalue="Gradle.app [installDist]" />
+        <item itemvalue="Gradle.app [run]" />
         <item itemvalue="Gradle.app [check]" />
       </list>
     </recent_temporary>

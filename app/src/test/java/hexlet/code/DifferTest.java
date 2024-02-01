@@ -47,5 +47,14 @@ class DifferTest {
                 + "Property 'verbose' was added with value: true";
         var actual3 = Differ.generate("src/test/resources/file1.json", "src/test/resources/file2.json", "plain");
         assertEquals(expected3, actual3);
+
+        var expected4 = "{-\"follow\": \"false\", ~\"host\": \"hexlet.io\"," +
+                " -\"obj1\": \"{nestedKey=value, isNested=true}\"," +
+                " +\"obj1\": \"{nestedKey=value}\", +\"obj2\": \"{key=value}\"," +
+                " -\"obj3\": \"250\", +\"obj3\": \"{key=value}\"," +
+                " -\"proxy\": \"123.234.53.22\", -\"timeout\": \"50\"," +
+                " +\"timeout\": \"20\", +\"verbose\": \"true\"}";
+        var actual4 = Differ.generate("src/test/resources/file1.json", "src/test/resources/file2.json", "json");
+        assertEquals(expected4, actual4);
     }
 }
