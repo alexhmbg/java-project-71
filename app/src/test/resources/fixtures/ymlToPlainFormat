@@ -1,5 +1,5 @@
 Property 'calling birds' was removed
-Property 'calling-birds' was added with value: huey
+Property 'calling-birds' was added with value: 'huey'
 Property 'chars2' was updated. From [complex value] to false
 Property 'obj1' was added with value: [complex value]
 Property 'pi' was removed
