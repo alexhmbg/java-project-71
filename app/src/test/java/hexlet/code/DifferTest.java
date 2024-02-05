@@ -43,14 +43,12 @@ class DifferTest {
 
         var expected7 = Parser.parseTestExpected("src/test/resources/fixtures/jsonToStylishFormat");
         var actual7 = Differ.generate("src/test/resources/fixtures/file1.json",
-                "src/test/resources/fixtures/file2.json",
-                "test");
+                "src/test/resources/fixtures/file2.json");
         assertEquals(expected7, actual7);
 
         var expected8 = Parser.parseTestExpected("src/test/resources/fixtures/ymlToStylishFormat");
         var actual8 = Differ.generate("src/test/resources/fixtures/file1.yml",
-                "src/test/resources/fixtures/file2.yml",
-                "test");
+                "src/test/resources/fixtures/file2.yml");
         assertEquals(expected8, actual8);
     }
 }
