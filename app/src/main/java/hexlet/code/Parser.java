@@ -24,4 +24,10 @@ public class Parser {
 
         return fileMap;
     }
+
+    public static String parseTestExpected(String filepath) throws Exception {
+        String data = "";
+        data = new String(Files.readAllBytes(Paths.get(filepath)));
+        return data;
+    }
 }

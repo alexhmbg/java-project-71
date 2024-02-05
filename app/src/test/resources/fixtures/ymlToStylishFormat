@@ -1,0 +1,14 @@
+{
+  - calling birds: [huey, dewey, louie, fred]
+  + calling-birds: huey
+    chars1: [a, b, c]
+  - chars2: [d, e, f]
+  + chars2: false
+    check: null
+  + obj1: {nestedKey=value, isNested=true}
+  - pi: 3.14159
+    ray: a drop of golden sun
+  + vi: 2.1
+  - xmas: true
+  + xmas: false
+}

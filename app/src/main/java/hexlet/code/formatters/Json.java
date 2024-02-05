@@ -1,5 +1,6 @@
 package hexlet.code.formatters;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,24 +18,29 @@ public class Json {
 
             switch (String.valueOf(getStatus)) {
                 case "added":
-                    map.put("+" + "\"" + getKey + "\"", "\"" + getValue1 + "\"");
+                    map.put("\"  + " + getKey + "\"", getValue1);
                     break;
                 case "deleted":
-                    map.put("-" + "\"" + getKey + "\"", "\"" + getValue1 + "\"");
+                    map.put("\"  - " + getKey + "\"", getValue1);
                     break;
                 case "unchanged":
-                    map.put("~" + "\"" + getKey + "\"", "\"" + getValue1 + "\"");
+                    map.put("\"    " + getKey + "\"", getValue1);
                     break;
                 default:
-                    map.put("-" + "\"" + getKey + "\"", "\"" + getValue1 + "\"");
-                    map.put("+" + "\"" + getKey + "\"", "\"" + getValue2 + "\"");
+                    map.put("\"  - " + getKey + "\"", getValue1);
+                    map.put("\"  + " + getKey + "\"", getValue2);
                     break;
             }
         }
 
         String result = map.entrySet().stream()
-                .map(n -> n.getKey() + ": " + n.getValue())
-                .collect(Collectors.joining(", ", "{", "}"));
+                .map(n -> n.getKey()
+                        + ": "
+                        + (n.getValue() instanceof String
+                        ? "\"" + n.getValue() + "\""
+                        : n.getValue())
+                )
+                .collect(Collectors.joining(",\n", "{\n", "\n}"));
 
         return result;
     }

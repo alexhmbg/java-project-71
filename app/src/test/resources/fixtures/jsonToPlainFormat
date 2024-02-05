@@ -1,0 +1,7 @@
+Property 'follow' was removed
+Property 'obj1' was updated. From [complex value] to [complex value]
+Property 'obj2' was added with value: [complex value]
+Property 'obj3' was updated. From 250 to [complex value]
+Property 'proxy' was removed
+Property 'timeout' was updated. From 50 to 20
+Property 'verbose' was added with value: true
