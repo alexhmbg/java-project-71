@@ -1,12 +1,8 @@
----
-ray: "a drop of golden sun"
-pi: 3.14159
-xmas: true
-calling birds:
-    - huey
-    - dewey
-    - louie
-    - fred
-check: null
-chars1: ["a", "b", "c"]
-chars2: ["d", "e", "f"]
+{
+    "host": "hexlet.io",
+    "timeout": 50,
+    "proxy": "123.234.53.22",
+    "follow": false,
+    "obj1": {"nestedKey": "value", "isNested": true},
+    "obj3": 250
+}

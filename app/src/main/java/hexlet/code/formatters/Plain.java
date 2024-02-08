@@ -21,11 +21,13 @@ public class Plain {
                 case "deleted":
                     result.add("Property '" + getKey + "' was removed");
                     break;
+                case "changed":
+                    result.add("Property '" + getKey + "' was updated. From " + getValue1 + " to " + getValue2);
+                    break;
                 case "unchanged":
                     break;
                 default:
-                    result.add("Property '" + getKey + "' was updated. From " + getValue1 + " to " + getValue2);
-                    break;
+                    throw new RuntimeException("Unrecognizable status of diff " + getStatus);
             }
         }
 

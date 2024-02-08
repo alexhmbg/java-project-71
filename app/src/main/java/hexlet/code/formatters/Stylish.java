@@ -22,13 +22,15 @@ public class Stylish {
                 case "deleted":
                     map.put("  - " + getKey, getValue1);
                     break;
+                case "changed":
+                    map.put("  - " + getKey, getValue1);
+                    map.put("  + " + getKey, getValue2);
+                    break;
                 case "unchanged":
                     map.put("    " + getKey, getValue1);
                     break;
                 default:
-                    map.put("  - " + getKey, getValue1);
-                    map.put("  + " + getKey, getValue2);
-                    break;
+                    throw new RuntimeException("Unrecognizable status of diff " + getStatus);
             }
         }
 
