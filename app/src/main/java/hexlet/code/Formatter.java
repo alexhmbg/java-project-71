@@ -16,7 +16,7 @@ public class Formatter {
             case "stylish" -> Stylish.format(listOfMapDiffs);
             case "plain" -> Plain.format(listOfMapDiffs);
             case "json" -> Json.format(listOfMapDiffs);
-            default -> Formatter.format(listOfMapDiffs, "stylish");
+            default -> throw new RuntimeException("Unrecognizable format " + format);
         };
 
     }

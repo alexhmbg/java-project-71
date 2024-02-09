@@ -4,14 +4,21 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.stream.Stream;
 
 public class DiffBuilder {
     public static List<Map<String, Object>> build(Map<String, Object> fileMap1,
-                                                  Map<String, Object> fileMap2,
-                                                  List<String> keys) {
+                                                  Map<String, Object> fileMap2) {
         List<Map<String, Object>> listOfMapDiffs = new LinkedList<>();
 
-        for (var key : keys) {
+        List<String> sortedKeys = Stream.concat(
+                        fileMap1.keySet().stream(),
+                        fileMap2.keySet().stream())
+                .distinct()
+                .sorted()
+                .toList();
+
+        for (var key : sortedKeys) {
             Map<String, Object> map = new TreeMap<>();
             var valueString1 = fileMap1.get(key);
             var valueString2 = fileMap2.get(key);
